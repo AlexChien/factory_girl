@@ -4,13 +4,13 @@ class Factory
   self.factories = {}
   self.sequences = {}
 
-  attr_reader :name
+  attr_reader :factory_name
 
   # Defines a new factory that can be used by the build strategies (create and
   # build) to build new objects.
   #
   # Arguments:
-  #   name: (Symbol)
+  #   factory_name: (Symbol)
   #     A unique name used to identify this factory.
   #   options: (Hash)
   #     class: the class that will be used when generating instances for this
@@ -19,10 +19,10 @@ class Factory
   #
   # Yields:
   #    The newly created factory (Factory)
-  def self.define (name, options = {})
-    instance = Factory.new(name, options)
+  def self.define (factory_name, options = {})
+    instance = Factory.new(factory_name, options)
     yield(instance)
-    self.factories[name] = instance
+    self.factories[factory_name] = instance
   end
 
   # Defines a new sequence that can be used to generate unique values in a specific format.
@@ -61,12 +61,12 @@ class Factory
   end
 
   def build_class #:nodoc:
-    @build_class ||= @options[:class] || name.to_s.classify.constantize
+    @build_class ||= @options[:class] || factory_name.to_s.classify.constantize
   end
 
-  def initialize (name, options = {}) #:nodoc:
+  def initialize (factory_name, options = {}) #:nodoc:
     options.assert_valid_keys(:class)
-    @name    = name
+    @factory_name    = factory_name
     @options = options
 
     @static_attributes     = {}

@@ -82,8 +82,8 @@ class FactoryTest < Test::Unit::TestCase
       @factory = Factory.new(@name)
     end
 
-    should "have a name" do
-      assert_equal @name, @factory.name
+    should "have a factory name" do
+      assert_equal @name, @factory.factory_name
     end
 
     should "have a build class" do
@@ -328,6 +328,17 @@ class FactoryTest < Test::Unit::TestCase
       assert_equal @value, Factory.next(@name)
     end
 
+  end
+  
+  context "a factory with a name attribute" do
+    should "not raise an exception when setting the 'name' attribute" do
+      assert_nothing_raised do
+        Factory.define :customer do |f|
+          f.name = "banana"
+        end
+      end
+    end
+    
   end
 
 end

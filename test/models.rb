@@ -16,6 +16,11 @@ class CreateSchema < ActiveRecord::Migration
       t.string  :title
       t.integer :author_id
     end
+        
+    create_table :companies, :force => true do |t|
+      t.string :name
+    end
+    
   end
 end
 
@@ -29,4 +34,7 @@ end
 class Post < ActiveRecord::Base
   validates_presence_of :title, :author_id
   belongs_to :author, :class_name => 'User'
+end
+
+class Company < ActiveRecord::Base
 end
