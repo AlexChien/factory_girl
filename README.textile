@@ -118,6 +118,15 @@ Factory.build(:user, :first_name => 'Joe')
 # Return an attributes Hash that can be used to build a User instance
 attrs = Factory.attributes_for(:user)</code></pre>
 
+h2. New features in this fork branch
+
+HashFactory(:user) is a shoutcut for Factory.attributes_for
+
+<pre><code>Factory.define :post do |p|
+  # ...
+  p.description {|p| Factory.lorem }
+end</code></pre>
+
 h2. More Information
 
 "Our blog":http://giantrobots.thoughtbot.com
