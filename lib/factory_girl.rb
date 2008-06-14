@@ -10,3 +10,7 @@ require 'factory_girl/sequence'
 def Factory (name, attrs = {})
   Factory.create(name, attrs)
 end
+
+def HashFactory( name, attrs = {})
+  Factory.attributes_for(name, attrs)
+end
