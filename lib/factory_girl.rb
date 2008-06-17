@@ -2,6 +2,7 @@ require 'activesupport'
 require 'factory_girl/factory'
 require 'factory_girl/attribute_proxy'
 require 'factory_girl/sequence'
+require 'factory_girl/lorem'
 
 # Shortcut for Factory.create.
 #

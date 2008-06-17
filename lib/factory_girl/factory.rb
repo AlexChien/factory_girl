@@ -60,7 +60,6 @@ class Factory
     self.sequences[sequence].next
   end
 
-  require 'lorem.rb'
   # <tt>type</tt> - the type of output (either paragraphs, words, or characters)
   # <tt>number</tt> - the number of types to output
   def self.lorem(type = :paragraphs, number = 1)
